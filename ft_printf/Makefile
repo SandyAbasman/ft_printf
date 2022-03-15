@@ -3,22 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asandy <asandy@student.42abudhabi.ae>      +#+  +:+       +#+         #
+#    By: asandy <abasifrekesandy@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 21:06:52 by asandy            #+#    #+#              #
-#    Updated: 2022/03/14 21:06:56 by asandy           ###   ########.fr        #
+#    Updated: 2022/03/15 21:56:00 by asandy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = 
+SRC = ft_print.c ft_printer.c
+
+OBJS = $(SRCS:.c=.o)
+CFLAGS = -Wall -Werror _wextra 
 
 all: $(NAME)
 
-$(NAME):
-	gcc -Wall -Wextra -Werror - c &(SRC)
-	ar - rc $(NAME) *.o 
+$(NAME): $(OBJS)
+	ar - rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
