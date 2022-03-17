@@ -6,27 +6,29 @@
 #    By: asandy <abasifrekesandy@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 21:06:52 by asandy            #+#    #+#              #
-#    Updated: 2022/03/15 21:56:00 by asandy           ###   ########.fr        #
+#    Updated: 2022/03/17 21:39:55 by asandy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_print.c ft_printer.c
+SRC = ft_printf.c ft_printer.c
 
-OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Werror _wextra 
+OBJS = $(SRC:.c=.o)
+CFLAGS = -Wall -Werror -Wextra 
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar - rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+		ar -rc $(NAME) $(OBJS)
+	
+%.o:%.c ft_printf.h
+		cc $(CFLAGS) -o $@ -c $< 
 
 clean:
-	rm -f *.o
-
-fclean: clean 
+		rm -rf $(OBJS)
+	
+fclean:clean 
 		rm -f $(NAME)
 
-re: fclean all s
+re: fclean all 
